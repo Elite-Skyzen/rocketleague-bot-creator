@@ -1,119 +1,76 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rocket League Bot Creator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: 'Orbitron', sans-serif;
-      background: url('https://pbs.twimg.com/media/ExNq7-sXAAAtn6I?format=jpg&name=large') no-repeat center center fixed;
+      background: url('https://i.postimg.cc/J4VYc6gv/rocket-league-field.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
-      overflow-x: hidden;
     }
 
     .container {
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.8);
       max-width: 900px;
-      margin: 50px auto;
-      padding: 30px 50px;
-      border-radius: 20px;
-      box-shadow: 0 0 25px #ff4e00, 0 0 40px #0057b7;
-      border: 2px solid #ff4e00;
+      margin: 40px auto;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px #00bfff;
     }
 
     h1 {
       text-align: center;
-      color: #ff4e00;
-      text-shadow: 0 0 10px #ff4e00, 0 0 20px #0057b7;
-      margin-bottom: 35px;
-      font-weight: 900;
-      letter-spacing: 2px;
+      color: #00bfff;
       font-size: 3rem;
+      margin-bottom: 25px;
     }
 
     label {
       display: block;
-      margin-top: 20px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #00bfff;
-      text-shadow: 0 0 5px #00bfff;
+      margin-top: 18px;
+      font-weight: bold;
     }
 
     .checkbox-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 8px;
+      gap: 12px;
+      margin-top: 10px;
     }
 
     .checkbox-group label {
-      flex: 1 0 150px;
-      font-weight: 400;
-      text-transform: none;
-      color: #ddd;
-      cursor: pointer;
-    }
-
-    .checkbox-group input[type="checkbox"] {
-      transform: scale(1.3);
-      margin-right: 8px;
-      cursor: pointer;
+      flex: 1 0 45%;
+      font-weight: normal;
     }
 
     select, button {
-      margin-top: 12px;
+      margin-top: 16px;
       padding: 10px 16px;
-      font-size: 17px;
+      font-size: 16px;
       border-radius: 8px;
       border: none;
       outline: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s ease, color 0.3s ease;
-      box-shadow: 0 0 10px #0057b7;
-      color: #000;
-    }
-
-    select {
       width: 100%;
-      max-width: 350px;
-      background: #00bfff;
+      max-width: 300px;
     }
 
     button {
-      background: #ff4e00;
-      color: #fff;
-      max-width: 360px;
-      width: 100%;
-      margin-top: 30px;
-      box-shadow: 0 0 20px #ff4e00;
-      font-size: 18px;
-      font-weight: 900;
+      background-color: #00bfff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     button:hover {
-      background: #ff6e29;
-      box-shadow: 0 0 25px #ff6e29;
-    }
-
-    .instructions {
-      margin-top: 25px;
-      background: #001a2e;
-      padding: 18px 22px;
-      border-radius: 14px;
-      font-size: 15px;
-      line-height: 1.6;
-      color: #eee;
-      box-shadow: inset 0 0 12px #0057b7;
-      display: none;
-      max-width: 850px;
+      background-color: #009acd;
     }
   </style>
 </head>
@@ -121,75 +78,53 @@
   <div class="container">
     <h1>Rocket League Bot Creator</h1>
 
-    <form id="botForm">
-      <label>Compétences spéciales :</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox" name="skills" value="aerials" /> Aerials</label>
-        <label><input type="checkbox" name="skills" value="flip_resets" /> Flip resets</label>
-        <label><input type="checkbox" name="skills" value="air_dribbles" /> Air dribbles</label>
-        <label><input type="checkbox" name="skills" value="ceiling_shots" /> Ceiling shots</label>
-        <label><input type="checkbox" name="skills" value="musty_flicks" /> Musty flicks</label>
-        <label><input type="checkbox" name="skills" value="breezi_flicks" /> Breezi flicks</label>
-        <label><input type="checkbox" name="skills" value="wall_dashes" /> Wall dashes</label>
-        <label><input type="checkbox" name="skills" value="pogo_and_musty" /> Pogo et musty</label>
-        <label><input type="checkbox" name="skills" value="ground_pinches" /> Ground pinches</label>
-        <label><input type="checkbox" name="skills" value="stalls" /> Stalls</label>
-        <label><input type="checkbox" name="skills" value="wave_dash_shots" /> Wave dash shots</label>
-        <label><input type="checkbox" name="skills" value="ceiling_pinches" /> Ceiling pinches</label>
-        <label><input type="checkbox" name="skills" value="preflips" /> Preflips</label>
-      </div>
-
-      <label for="difficulty">Difficulté du bot :</label>
-      <select id="difficulty" name="difficulty" required>
-        <option value="" disabled selected>Choisissez la difficulté</option>
-        <option value="nul">Nul</option>
-        <option value="moyen">Moyen</option>
-        <option value="fort">Fort</option>
-      </select>
-
-      <label for="rank">Niveau du bot :</label>
-      <select id="rank" name="rank" required>
-        <option value="" disabled selected>Choisissez le rang</option>
-        <option value="platine">Platine</option>
-        <option value="diamant">Diamant</option>
-        <option value="champion">Champion</option>
-        <option value="grand_champion">Grand Champion</option>
-        <option value="ssl">SSL</option>
-      </select>
-
-      <label for="car">Voiture du bot :</label>
-      <select id="car" name="car" required>
-        <option value="" disabled selected>Choisissez la voiture</option>
-        <option value="octane">Octane</option>
-        <option value="dominus">Dominus</option>
-        <option value="fennec">Fennec</option>
-        <option value="merc">Merc</option>
-      </select>
-
-      <button type="button" id="downloadBtn">Télécharger le bot</button>
-    </form>
-
-    <div class="instructions" id="instructions">
-      <h3>Instructions après téléchargement :</h3>
-      <p>1. Ouvre RLBot ou BotRunner sur ton PC.</p>
-      <p>2. Clique sur “Choisir le bot” et sélectionne le fichier téléchargé.</p>
-      <p>3. Lance le match depuis RLBot, et ton bot utilisera les paramètres choisis !</p>
+    <label>Compétences du bot :</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="skills" value="aerials"> Aerials</label>
+      <label><input type="checkbox" name="skills" value="flipresets"> Flip Resets</label>
+      <label><input type="checkbox" name="skills" value="airdribbles"> Air Dribbles</label>
+      <label><input type="checkbox" name="skills" value="ceiling"> Ceiling Shots</label>
+      <label><input type="checkbox" name="skills" value="mustyflick"> Musty Flicks</label>
+      <label><input type="checkbox" name="skills" value="breezi"> Breezi Flicks</label>
+      <label><input type="checkbox" name="skills" value="walldashes"> Wall Dashes</label>
+      <label><input type="checkbox" name="skills" value="pogo"> Pogo</label>
+      <label><input type="checkbox" name="skills" value="musty"> Musty</label>
+      <label><input type="checkbox" name="skills" value="groundpinch"> Ground Pinches</label>
+      <label><input type="checkbox" name="skills" value="stalls"> Stalls</label>
+      <label><input type="checkbox" name="skills" value="wavedash"> Wave Dash Shots</label>
+      <label><input type="checkbox" name="skills" value="ceilingpinch"> Ceiling Pinches</label>
+      <label><input type="checkbox" name="skills" value="preflips"> Preflips</label>
     </div>
+
+    <label for="difficulty">Difficulté du bot :</label>
+    <select id="difficulty">
+      <option value="faible">Nul</option>
+      <option value="moyen">Moyen</option>
+      <option value="fort">Fort</option>
+    </select>
+
+    <label for="rank">Niveau du bot :</label>
+    <select id="rank">
+      <option value="platine">Platine</option>
+      <option value="diamant">Diamant</option>
+      <option value="champion">Champion</option>
+      <option value="grandchampion">Grand Champion</option>
+      <option value="ssl">SSL</option>
+    </select>
+
+    <label for="car">Voiture du bot :</label>
+    <select id="car">
+      <option value="octane">Octane</option>
+      <option value="fennec">Fennec</option>
+      <option value="dominus">Dominus</option>
+      <option value="breakout">Breakout</option>
+    </select>
+
+    <form method="get" action="bot-test.zip">
+      <button type="submit">Télécharger le bot</button>
+    </form>
   </div>
-
-  <script>
-    document.getElementById('downloadBtn').addEventListener('click', function () {
-      const link = document.createElement('a');
-      link.href = 'bot-test.zip'; // le fichier doit être à la racine
-      link.download = 'bot-test.zip';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      document.getElementById('instructions').style.display = 'block';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    });
-  </script>
 </body>
 </html>
+
 
