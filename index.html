@@ -79,7 +79,126 @@
     display: none;
   }
 </style>
-</head>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0057b7 0%, #ff4e00 100%);
+  background-image:
+    url('https://wallpapercave.com/wp/wp7303607.jpg'),
+    linear-gradient(135deg, #0057b7 0%, #ff4e00 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.container {
+  background: rgba(0,0,0,0.85);
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px 50px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #ff4e00, 0 0 40px #0057b7;
+  border: 2px solid #ff4e00;
+}
+
+h1 {
+  text-align: center;
+  color: #ff4e00;
+  text-shadow: 0 0 10px #ff4e00, 0 0 20px #0057b7;
+  margin-bottom: 35px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 3rem;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #00bfff;
+  text-shadow: 0 0 5px #00bfff;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 8px;
+}
+
+.checkbox-group label {
+  flex: 1 0 150px;
+  font-weight: 400;
+  text-transform: none;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  transform: scale(1.3);
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+select, button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  font-size: 17px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
+  box-shadow: 0 0 10px #0057b7;
+  color: #000;
+}
+
+select {
+  width: 100%;
+  max-width: 350px;
+  background: #00bfff;
+}
+
+select option {
+  color: #000;
+}
+
+button {
+  background: #ff4e00;
+  color: #fff;
+  max-width: 360px;
+  width: 100%;
+  margin-top: 30px;
+  box-shadow: 0 0 20px #ff4e00;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+button:hover {
+  background: #ff6e29;
+  box-shadow: 0 0 25px #ff6e29;
+}
+
+.instructions {
+  margin-top: 25px;
+  background: #001a2e;
+  padding: 18px 22px;
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #eee;
+  box-shadow: inset 0 0 12px #0057b7;
+  display: none;
+  max-width: 850px;
+}
+
 <body>
   <div class="container">
     <h1>Rocket League Bot Creator</h1>
