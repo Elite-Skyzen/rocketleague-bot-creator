@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Créateur de Bot Rocket League</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
+
+  body {
+    margin: 0; padding: 0; background: #121212; color: #eee;
+    font-family: 'Roboto', sans-serif;
+    display: flex; flex-direction: column; align-items: center;
+    min-height: 100vh;
+  }
+  header {
+    background: #1f1f1f;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: #00cfff;
+    letter-spacing: 0.1em;
+  }
+  main {
+    flex: 1;
+    max-width: 900px;
+    width: 95%;
+    padding: 20px;
+    background: #222;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00cfff88;
+  }
+  section {
+    margin-bottom: 25px;
+  }
+  h2 {
+    color: #00cfff;
+    border-bottom: 2px solid #00cfff;
+    padding-bottom: 5px;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  input[type="checkbox"], input[type="radio"], select {
+    margin-right: 12px;
+  }
+  select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+  }
+  button {
+    background: #00cfff;
+    color: #121212;
+    border: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+  }
+  button:hover {
+    background: #0099bb;
+  }
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 25px;
+  }
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .message-box {
+    background: #003a4d;
+    border: 1px solid #00cfff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #cceeff;
+    white-space: pre-line;
+  }
+  footer {
+    text-align: center;
+    padding: 12px;
+    font-size: 0.85rem;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+
+<header>Créateur de Bot Rocket League</header>
+
+<main>
+  <form id="botForm">
+    
+    <section>
+      <h2>Spécificités du Bot (choisissez ce qu'il doit faire)</h2>
+      <div class="flex-row">
+        <label><input type="checkbox" name="skills" value="Aerials" /> Aerials</label>
+        <label><input type="checkbox" name="skills" value="Flip Resets" /> Flip Resets</label>
+        <label><input type="checkbox" name="skills" value="Air Dribbles" /> Air Dribbles</label>
+        <label><input type="checkbox" name="skills" value="Ceiling Shots" /> Ceiling Shots</label>
+        <label><input type="checkbox" name="skills" value="Musty Flicks" /> Musty Flicks</label>
+        <label><input type="checkbox" name="skills" value="Breezi Flicks" /> Breezi Flicks</label>
+        <label><input type="checkbox" name="skills" value="Wall Dashes" /> Wall Dashes</label>
+        <label><input type="checkbox" name="skills" value="Pogo & Musty" /> Pogo & Musty</label>
+        <label><input type="checkbox" name="skills" value="Ground Pinches" /> Ground Pinches</label>
+        <label><input type="checkbox" name="skills" value="Stalls" /> Stalls</label>
+        <label><input type="checkbox" name="skills" value="Wave Dash Shots" /> Wave Dash Shots</label>
+        <label><input type="checkbox" name="skills" value="Ceiling Pinches" /> Ceiling Pinches</label>
+        <label><input type="checkbox" name="skills" value="Preflips" /> Preflips</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>Dribbles - Difficulté</h2>
+      <select name="dribbleDifficulty" required>
+        <option value="" disabled selected>Choisissez la difficulté</option>
+        <option value="Nul">Nul</option>
+        <option value="Moyen">Moyen</option>
+        <option value="Fort">Fort</option>
+      </select>
+    </section>
+
+    <section>
+      <h2>Niveau du Bot</h2>
+      <select name="botLevel" required>
+        <option value="" disabled selected>Choisissez le niveau du bot</option>
+        <option value="Platine">Platine</option>
+        <option value="Diamant">Diamant</option>
+        <option value="Champion">Champion</option>
+        <option value="Grand Champion">Grand Champion</option>
+        <option value="SSL">Supersonic Legend</option>
+      </select>
+    </section>
+
+    <section>
+      <h2>Choix de la voiture</h2>
+      <select name="car" required>
+        <option value="" disabled selected>Choisissez la voiture</option>
+        <option value="Octane">Octane</option>
+        <option value="Dominus">Dominus</option>
+        <option value="Fennec">Fennec</option>
+        <option value="Breakout">Breakout</option>
+        <option value="Batmobile">Batmobile</option>
+      </select>
+      <input type="text" name="stickers" placeholder="Modifie les stickers (ex: flammes, tribal)" />
+    </section>
+
+    <button type="submit">Télécharger le bot</button>
+
+    <div id="message" class="message-box" style="display:none;"></div>
+  </form>
+</main>
+
+<footer>
+  Rocket League Bot Creator - Projet fictif © 2025
+</footer>
+
+<script>
+  const form = document.getElementById('botForm');
+  const messageBox = document.getElementById('message');
+
+  form.addEventListener('submit',
