@@ -1,50 +1,169 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Créateur de Bot Rocket League</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      padding: 50px;
-    }
-
-    h1 {
-      color: #38bdf8;
-    }
-
-    .btn-download {
-      margin-top: 20px;
-      background: #1e40af;
-      color: white;
-      padding: 15px 25px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .btn-download:hover {
-      background: #2563eb;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rocket League Bot Creator</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+  body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: url('https://images.unsplash.com/photo-1590080877780-c5647b198d0c?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+  }
+  .container {
+    background: rgba(0,0,0,0.75);
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00bfff;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #00bfff;
+    text-shadow: 0 0 8px #00bfff;
+  }
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .checkbox-group label {
+    flex: 1 0 140px;
+    font-weight: normal;
+    text-transform: none;
+  }
+  select, button {
+    margin-top: 10px;
+    padding: 8px 14px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  select {
+    width: 100%;
+    max-width: 300px;
+  }
+  button {
+    background: #00bfff;
+    color: #000;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    width: 100%;
+    max-width: 320px;
+    margin-top: 25px;
+  }
+  button:hover {
+    background: #0099cc;
+  }
+  .instructions {
+    margin-top: 20px;
+    background: #002233;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    display: none;
+  }
+</style>
 </head>
 <body>
-  <h1>Créateur de Bot Rocket League</h1>
-  <p>Personnalise ton bot et télécharge-le ici</p>
+  <div class="container">
+    <h1>Rocket League Bot Creator</h1>
 
-  <!-- 🔽 Lien vers le fichier du bot (remplace bot-test.zip par ton vrai fichier plus tard) -->
-  <a href="bot-test.zip" download>
-    <button class="btn-download">📥 Télécharger le bot</button>
-  </a>
+    <form id="botForm">
+      <label>Spécificités du bot :</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="skills" value="aerials" /> Aerials</label>
+        <label><input type="checkbox" name="skills" value="flip_resets" /> Flip resets</label>
+        <label><input type="checkbox" name="skills" value="air_dribbles" /> Air dribbles</label>
+        <label><input type="checkbox" name="skills" value="ceiling_shots" /> Ceiling shots</label>
+        <label><input type="checkbox" name="skills" value="musty_flicks" /> Musty flicks</label>
+        <label><input type="checkbox" name="skills" value="breezi_flicks" /> Breezi flicks</label>
+        <label><input type="checkbox" name="skills" value="wall_dashes" /> Wall dashes</label>
+        <label><input type="checkbox" name="skills" value="pogo_and_musty" /> Pogo et musty</label>
+        <label><input type="checkbox" name="skills" value="ground_pinches" /> Ground pinches</label>
+        <label><input type="checkbox" name="skills" value="stalls" /> Stalls</label>
+        <label><input type="checkbox" name="skills" value="wave_dash_shots" /> Wave dash shots</label>
+        <label><input type="checkbox" name="skills" value="ceiling_pinches" /> Ceiling pinches</label>
+        <label><input type="checkbox" name="skills" value="preflips" /> Preflips</label>
+      </div>
 
-  <p style="margin-top:30px; font-size: 14px; color: #94a3b8;">
-    Le fichier se téléchargera automatiquement. Une fois téléchargé, lance l'application du bot et choisis ce fichier.
-  </p>
+      <label for="difficulty">Difficulté du bot :</label>
+      <select id="difficulty" name="difficulty" required>
+        <option value="" disabled selected>Choisissez la difficulté</option>
+        <option value="nul">Nul</option>
+        <option value="moyen">Moyen</option>
+        <option value="fort">Fort</option>
+      </select>
+
+      <label for="rank">Niveau du bot :</label>
+      <select id="rank" name="rank" required>
+        <option value="" disabled selected>Choisissez le rang</option>
+        <option value="platine">Platine</option>
+        <option value="diamant">Diamant</option>
+        <option value="champion">Champion</option>
+        <option value="grand_champion">Grand Champion</option>
+        <option value="ssl">SSL</option>
+      </select>
+
+      <label for="car">Voiture du bot :</label>
+      <select id="car" name="car" required>
+        <option value="" disabled selected>Choisissez la voiture</option>
+        <option value="octane">Octane</option>
+        <option value="dominus">Dominus</option>
+        <option value="fennec">Fennec</option>
+        <option value="merc">Merc</option>
+      </select>
+
+      <label for="stickers">Stickers :</label>
+      <select id="stickers" name="stickers" required>
+        <option value="" disabled selected>Choisissez un sticker</option>
+        <option value="flamethrower">Flamethrower</option>
+        <option value="lightning">Lightning</option>
+        <option value="stars">Stars</option>
+        <option value="flames">Flames</option>
+      </select>
+
+      <button type="button" id="downloadBtn">Télécharger le bot</button>
+    </form>
+
+    <div class="instructions" id="instructions">
+      <h3>Instructions après téléchargement :</h3>
+      <p>1. Ouvre l’application Bot Runner.</p>
+      <p>2. Clique sur “Choisir le bot” et sélectionne le fichier que tu viens de télécharger.</p>
+      <p>3. Choisis l’équipe du bot dans l’application.</p>
+      <p>4. Clique sur “Launch game” pour démarrer le match.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      // Ici on simule le téléchargement avec un fichier test
+      const link = document.createElement('a');
+      link.href = 'bot-test.zip'; // le fichier doit être à la racine du repo GitHub
+      link.download = 'bot-test.zip';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Affiche les instructions après téléchargement
+      document.getElementById('instructions').style.display = 'block';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
-
