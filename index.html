@@ -4,22 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rocket League Bot Creator</title>
-  
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #0057b7 0%, #ff4e00 100%);
-      background-image:
-        url('https://wallpapercave.com/wp/wp7303607.jpg'),
-        linear-gradient(135deg, #0057b7 0%, #ff4e00 100%);
-      background-repeat: no-repeat;
-      background-position: center;
+      background: url('https://cdn.wallpapersafari.com/11/74/MU9NDT.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
-      overflow-x: hidden;
+      min-height: 100vh;
     }
 
     .container {
@@ -127,7 +125,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container">
     <h1>Rocket League Bot Creator</h1>
@@ -193,24 +190,16 @@
       <h3>Instructions après téléchargement :</h3>
       <p>1. Ouvre l’application <strong>Bot Runner</strong>.</p>
       <p>2. Clique sur “Choisir le bot” et sélectionne le fichier ZIP que tu viens de télécharger.</p>
-      <p>3. Clique sur “Lancer le match” et le jeu Rocket League s’ouvrira avec ton bot personnalisé automatiquement chargé !</p>
+      <p>3. Les caractéristiques du bot (niveau, voiture, compétences...) seront automatiquement appliquées.</p>
+      <p>4. Clique sur “Lancer le match” pour démarrer le jeu avec le bot.</p>
     </div>
   </div>
 
   <script>
-    document.getElementById('downloadBtn').addEventListener('click', function() {
+    document.getElementById('downloadBtn').addEventListener('click', function () {
       const link = document.createElement('a');
-      link.href = 'bot-test.zip'; // ce fichier doit être à la racine du dépôt
+      link.href = 'bot-test.zip';
       link.download = 'bot-test.zip';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
-      document.getElementById('instructions').style.display = 'block';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    });
-  </script>
-</body>
-</html>
-
-
